@@ -1,0 +1,47 @@
+#include <stdio.h>
+#include <cs50.h>
+
+int main(void)
+{
+    long i, x, x2;
+int sum, sum2, sum3;
+
+do
+{
+    long number = get_long("Number:");
+    i = number;
+}
+while ( i < 0 );
+
+for ( x = i, sum2 = 0; x > 0; x /=100)
+sum2 += x % 10;
+
+for ( x2 = i / 10, sum3 = 0; x2 > 0; x2 /= 100)
+{
+    if ( 2 * (x2 % 10) > 9 )
+    {
+        sum3 += (2* (x2 % 10)) / 10;
+        sum3 += (2* (x2 % 10)) % 10;
+    }
+    else
+    sum3 += 2* (x2 % 10);
+}
+
+sum = sum2 + sum3;
+
+if ( sum % 10 == 0)
+{
+    if ( (i >=340000000000000 && i < 350000000000000) || (i >=370000000000000 && i < 380000000000000) )
+        printf("AMEX\n");
+    else if ( i >= 5100000000000000 && i < 5600000000000000 )
+         printf("MASTERCARD\n");
+     else if ( (i >= 4000000000000 && i < 5000000000000) || (i >= 4000000000000000 && i < 5000000000000000) )  
+         printf("VISA\n");  
+     else
+         printf("INVALID\n");
+}
+   else
+        printf("INVALID\n");
+        return 0;
+
+}
